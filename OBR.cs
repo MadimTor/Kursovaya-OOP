@@ -16,12 +16,17 @@ namespace Test_2
     class OBR
     {
         private Bitmap _source;
-        
+
+        public OBR()
+        {
+            _source = null;
+        }
 
         public Bitmap Sourse
         {
             get => _source;
-            set => value = _source;
+            set => _ = _source;
         }
+
     }
 }
