@@ -14,7 +14,7 @@ namespace Test_2
 {
     public partial class Form1 : Form
     {
-        OBR obr = new OBR();
+        BrightnessContrast obr = new BrightnessContrast();
         public static Bitmap image;
         public static string full_name_of_image = "\0";
         public static UInt32[,] pixel;
@@ -40,17 +40,10 @@ namespace Test_2
                 {
                     full_name_of_image = open_dialog.FileName;
                     image = new Bitmap(open_dialog.FileName);
-                    //this.pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
-                    this.Width = image.Width + 40;
-                    this.Height = image.Height + 75;
                     this.pictureBox1.Size = image.Size;
                     pictureBox1.Image = image;
                     pictureBox1.Invalidate();
-                    //получение матрицы с пикселями
-                    pixel = new UInt32[image.Height, image.Width];
-                    for (int y = 0; y < image.Height; y++)
-                        for (int x = 0; x < image.Width; x++)
-                            pixel[y, x] = (UInt32)(image.GetPixel(x, y).ToArgb());
+                    obr.SetSource(image);
                 }
                 catch
                 {
@@ -75,21 +68,23 @@ namespace Test_2
         {
             if (Form1.full_name_of_image != "\0")
             {
-                UInt32 p;
-                for (int i = 0; i < Form1.image.Height; i++)
-                    for (int j = 0; j < Form1.image.Width; j++)
-                    {
-                        p = BrightnessContrast.Brightness(Form1.pixel[i, j], Brightness_bar.Value, Brightness_bar.Maximum);
-                        Form1.FromOnePixelToBitmap(i, j, p);
-                    }
-
-                FromBitmapToScreen();
+                obr.SetSource(image);
+                obr.Brightness(Brightness_bar.Value, Brightness_bar.Maximum);
+                pictureBox1.Image = obr.GetSource();
             }
         }
 
         private void Contrast_bar_Scroll(object sender, EventArgs e)
         {
-
+            if (Form1.full_name_of_image != "\0")
+            {
+                if (Form1.full_name_of_image != "\0")
+                {
+                    obr.SetSource(image);
+                    obr.Contrast(Contrast_bar.Value, Contrast_bar.Maximum);
+                    pictureBox1.Image = obr.GetSource();
+                }
+            }
         }
 
 
