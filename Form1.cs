@@ -71,6 +71,7 @@ namespace Test_2
                 obr.SetSource(image);
                 obr.Brightness(Brightness_bar.Value, Brightness_bar.Maximum);
                 pictureBox1.Image = obr.GetSource();
+                
             }
         }
 
@@ -87,24 +88,16 @@ namespace Test_2
             }
         }
 
-
-        public static void FromPixelToBitmap()
+        private void button1_Click(object sender, EventArgs e)
         {
-            for (int y = 0; y < image.Height; y++)
-                for (int x = 0; x < image.Width; x++)
-                    image.SetPixel(x, y, Color.FromArgb((int)pixel[y, x]));
+            image = obr.GetSource();
+            Brightness_bar.Value = 0;
         }
 
-        //преобразование из UINT32 to Bitmap по одному пикселю
-        public static void FromOnePixelToBitmap(int x, int y, UInt32 pixel)
+        private void button2_Click(object sender, EventArgs e)
         {
-            image.SetPixel(y, x, Color.FromArgb((int)pixel));
-        }
-
-        //вывод на экран
-        public void FromBitmapToScreen()
-        {
-            pictureBox1.Image = image;
+            image = obr.GetSource();
+            Contrast_bar.Value = 0;
         }
     }
 }
