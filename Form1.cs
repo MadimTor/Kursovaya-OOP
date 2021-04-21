@@ -91,28 +91,65 @@ namespace Test_2
 
         private void button1_Click(object sender, EventArgs e)
         {
-            image = obr.GetSource();
-            Brightness_bar.Value = 0;
+            if (Form1.full_name_of_image != "\0")
+            {
+                if (Form1.full_name_of_image != "\0")
+                {
+                    image = obr.GetSource();
+                    Brightness_bar.Value = 0;
+                }
+            }
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            image = obr.GetSource();
-            Contrast_bar.Value = 0;
+            if (Form1.full_name_of_image != "\0")
+            {
+                if (Form1.full_name_of_image != "\0")
+                {
+                    image = obr.GetSource();
+                    Contrast_bar.Value = 0;
+                }
+            }
         }
 
         private void button_filter_test_Click(object sender, EventArgs e)
         {
-            filt.SetSource(image);
-            filt.matrix_filtration(Filters.N2, Filters.blur);
-            pictureBox1.Image = filt.GetSource();
+            if (Form1.full_name_of_image != "\0")
+            {
+                if (Form1.full_name_of_image != "\0")
+                {
+                    filt.SetSource(image);
+                    filt.matrix_filtration(Filters.N2, Filters.blur);
+                    pictureBox1.Image = filt.GetSource();
+                }
+            }
         }
 
         private void Sharp_button_Click(object sender, EventArgs e)
         {
-            filt.SetSource(image);
-            filt.matrix_filtration(Filters.N1, Filters.sharpness);
-            pictureBox1.Image = filt.GetSource();
+            if (Form1.full_name_of_image != "\0")
+            {
+                if (Form1.full_name_of_image != "\0")
+                {
+                    filt.SetSource(image);
+                    filt.matrix_filtration(Filters.N1, Filters.sharpness);
+                    pictureBox1.Image = filt.GetSource();
+                }
+            }
+        }
+
+        private void negative_button_Click(object sender, EventArgs e)
+        {
+            if (Form1.full_name_of_image != "\0")
+            {
+                if (Form1.full_name_of_image != "\0")
+                {
+                    obr.SetSource(image);
+                    obr.Negative();
+                    pictureBox1.Image = obr.GetSource();
+                }
+            }
         }
     }
 }

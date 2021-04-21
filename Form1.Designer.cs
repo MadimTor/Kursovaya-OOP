@@ -45,6 +45,7 @@
             this.Contrast_bar = new System.Windows.Forms.TrackBar();
             this.label1 = new System.Windows.Forms.Label();
             this.Brightness_bar = new System.Windows.Forms.TrackBar();
+            this.negative_button = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -95,6 +96,7 @@
             // groupBox1
             // 
             this.groupBox1.AutoSize = true;
+            this.groupBox1.Controls.Add(this.negative_button);
             this.groupBox1.Controls.Add(this.Sharp_button);
             this.groupBox1.Controls.Add(this.button_filter_test);
             this.groupBox1.Controls.Add(this.button3);
@@ -109,7 +111,7 @@
             this.groupBox1.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.groupBox1.Location = new System.Drawing.Point(13, 28);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(215, 511);
+            this.groupBox1.Size = new System.Drawing.Size(215, 533);
             this.groupBox1.TabIndex = 5;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Инструменты";
@@ -117,7 +119,7 @@
             // Sharp_button
             // 
             this.Sharp_button.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.Sharp_button.Location = new System.Drawing.Point(11, 224);
+            this.Sharp_button.Location = new System.Drawing.Point(103, 441);
             this.Sharp_button.Name = "Sharp_button";
             this.Sharp_button.Size = new System.Drawing.Size(106, 29);
             this.Sharp_button.TabIndex = 11;
@@ -128,7 +130,7 @@
             // button_filter_test
             // 
             this.button_filter_test.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button_filter_test.Location = new System.Drawing.Point(11, 189);
+            this.button_filter_test.Location = new System.Drawing.Point(103, 476);
             this.button_filter_test.Name = "button_filter_test";
             this.button_filter_test.Size = new System.Drawing.Size(106, 29);
             this.button_filter_test.TabIndex = 10;
@@ -224,6 +226,17 @@
             this.Brightness_bar.TabIndex = 1;
             this.Brightness_bar.Scroll += new System.EventHandler(this.Brightness_bar_Scroll);
             // 
+            // negative_button
+            // 
+            this.negative_button.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.negative_button.Location = new System.Drawing.Point(11, 187);
+            this.negative_button.Name = "negative_button";
+            this.negative_button.Size = new System.Drawing.Size(106, 29);
+            this.negative_button.TabIndex = 12;
+            this.negative_button.Text = "NEGATIVE";
+            this.negative_button.UseVisualStyleBackColor = true;
+            this.negative_button.Click += new System.EventHandler(this.negative_button_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -267,6 +280,7 @@
         private System.Windows.Forms.Button Apply_contrast;
         private System.Windows.Forms.Button button_filter_test;
         private System.Windows.Forms.Button Sharp_button;
+        private System.Windows.Forms.Button negative_button;
     }
 }
 
