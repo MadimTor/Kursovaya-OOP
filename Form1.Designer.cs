@@ -34,6 +34,8 @@
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.Sharp_button = new System.Windows.Forms.Button();
+            this.button_filter_test = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.Apply_contrast = new System.Windows.Forms.Button();
             this.Apply_britness = new System.Windows.Forms.Button();
@@ -43,8 +45,6 @@
             this.Contrast_bar = new System.Windows.Forms.TrackBar();
             this.label1 = new System.Windows.Forms.Label();
             this.Brightness_bar = new System.Windows.Forms.TrackBar();
-            this.button_filter_test = new System.Windows.Forms.Button();
-            this.Sharp_button = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -113,6 +113,28 @@
             this.groupBox1.TabIndex = 5;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Инструменты";
+            // 
+            // Sharp_button
+            // 
+            this.Sharp_button.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.Sharp_button.Location = new System.Drawing.Point(11, 224);
+            this.Sharp_button.Name = "Sharp_button";
+            this.Sharp_button.Size = new System.Drawing.Size(106, 29);
+            this.Sharp_button.TabIndex = 11;
+            this.Sharp_button.Text = "Резкость";
+            this.Sharp_button.UseVisualStyleBackColor = true;
+            this.Sharp_button.Click += new System.EventHandler(this.Sharp_button_Click);
+            // 
+            // button_filter_test
+            // 
+            this.button_filter_test.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button_filter_test.Location = new System.Drawing.Point(11, 189);
+            this.button_filter_test.Name = "button_filter_test";
+            this.button_filter_test.Size = new System.Drawing.Size(106, 29);
+            this.button_filter_test.TabIndex = 10;
+            this.button_filter_test.Text = "Размыть";
+            this.button_filter_test.UseVisualStyleBackColor = true;
+            this.button_filter_test.Click += new System.EventHandler(this.button_filter_test_Click);
             // 
             // button3
             // 
@@ -201,28 +223,6 @@
             this.Brightness_bar.Size = new System.Drawing.Size(128, 45);
             this.Brightness_bar.TabIndex = 1;
             this.Brightness_bar.Scroll += new System.EventHandler(this.Brightness_bar_Scroll);
-            // 
-            // button_filter_test
-            // 
-            this.button_filter_test.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button_filter_test.Location = new System.Drawing.Point(11, 189);
-            this.button_filter_test.Name = "button_filter_test";
-            this.button_filter_test.Size = new System.Drawing.Size(79, 29);
-            this.button_filter_test.TabIndex = 10;
-            this.button_filter_test.Text = "Размыть";
-            this.button_filter_test.UseVisualStyleBackColor = true;
-            this.button_filter_test.Click += new System.EventHandler(this.button_filter_test_Click);
-            // 
-            // Sharp_button
-            // 
-            this.Sharp_button.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.Sharp_button.Location = new System.Drawing.Point(11, 224);
-            this.Sharp_button.Name = "Sharp_button";
-            this.Sharp_button.Size = new System.Drawing.Size(79, 29);
-            this.Sharp_button.TabIndex = 11;
-            this.Sharp_button.Text = "Резкость";
-            this.Sharp_button.UseVisualStyleBackColor = true;
-            this.Sharp_button.Click += new System.EventHandler(this.Sharp_button_Click);
             // 
             // Form1
             // 

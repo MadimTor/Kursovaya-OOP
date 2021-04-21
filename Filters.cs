@@ -82,6 +82,15 @@ namespace Test_2
             _sourceMatrix = newpixel;
         }
 
+
+
+        public void MedianFilter(int N)
+        {
+
+
+
+        }
+
         //вычисление нового цвета
         public static RGB CalculationOfColor(UInt32 pixel, double coefficient)
         {
@@ -106,9 +115,11 @@ namespace Test_2
                                                                {-1,  9, -1},
                                                                {-1, -1, -1}};
 
-        public const int N2 = 3;
-        public static double[,] blur = new double[N1, N1] {{0.111, 0.111, 0.111},
-                                                               {0.111, 0.111, 0.111},
-                                                               {0.111, 0.111, 0.111}};
+        public const int N2 = 5;
+        public static double[,] blur = new double[N2, N2] {{0.000789, 0.006581, 0.013347, 0.006581, 0.000789},
+                                                           {0.006581, 0.054901, 0.111345, 0.054901, 0.006581},
+                                                           {0.013347, 0.111345, 0.225821, 0.111345, 0.013347},
+                                                           {0.000789, 0.054901, 0.111345, 0.054901, 0.000789},
+                                                           {0.000789, 0.006581, 0.013347, 0.006581, 0.000789} };
     }
 }
