@@ -42,6 +42,9 @@ namespace Test_2
                     full_name_of_image = open_dialog.FileName;
                     image = new Bitmap(open_dialog.FileName);
                     this.pictureBox1.Size = image.Size;
+                    this.Width = image.Width + groupBox1.Width + 100;
+                    if (image.Height > groupBox1.Height)
+                        this.Height = image.Height;
                     pictureBox1.Image = image;
                     pictureBox1.Invalidate();
                     obr.SetSource(image);
@@ -71,6 +74,7 @@ namespace Test_2
             {
                 obr.SetSource(image);
                 obr.Brightness(Brightness_bar.Value, Brightness_bar.Maximum);
+                obr.Contrast(Contrast_bar.Value, Contrast_bar.Maximum);
                 pictureBox1.Image = obr.GetSource();
                 
             }
@@ -84,6 +88,7 @@ namespace Test_2
                 {
                     obr.SetSource(image);
                     obr.Contrast(Contrast_bar.Value, Contrast_bar.Maximum);
+                    obr.Brightness(Brightness_bar.Value, Brightness_bar.Maximum);
                     pictureBox1.Image = obr.GetSource();
                 }
             }
@@ -97,6 +102,7 @@ namespace Test_2
                 {
                     image = obr.GetSource();
                     Brightness_bar.Value = 0;
+                    Contrast_bar.Value = 0;
                 }
             }
         }
@@ -120,7 +126,10 @@ namespace Test_2
                 if (Form1.full_name_of_image != "\0")
                 {
                     filt.SetSource(image);
-                    filt.matrix_filtration(Filters.N2, Filters.blur);
+                    for (int i = 0; i < numericUpDown1.Value; i++)
+                    {                        
+                        filt.matrix_filtration(Filters.N2, Filters.blur);
+                    }
                     pictureBox1.Image = filt.GetSource();
                 }
             }
@@ -148,6 +157,19 @@ namespace Test_2
                     obr.SetSource(image);
                     obr.Negative();
                     pictureBox1.Image = obr.GetSource();
+                    image = obr.GetSource();
+                    
+                }
+            }
+        }
+
+        private void Apply_Filter_Click(object sender, EventArgs e)
+        {
+            if (Form1.full_name_of_image != "\0")
+            {
+                if (Form1.full_name_of_image != "\0")
+                {
+                    image = filt.GetSource();
                 }
             }
         }
