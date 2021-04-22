@@ -214,5 +214,19 @@ namespace Test_2
                 }
             }
         }
+
+        private void apply_RGB_Click(object sender, EventArgs e)
+        {
+            image = colorbal.GetSource();
+            trackBar_R.Value = 0;
+            trackBar_G.Value = 0;
+            trackBar_B.Value = 0;
+        }
+
+        private void Cancel_button_Click(object sender, EventArgs e)
+        {
+            image = new Bitmap(full_name_of_image);
+            pictureBox1.Image = image;
+        }
     }
 }

@@ -34,6 +34,12 @@
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.trackBar_B = new System.Windows.Forms.TrackBar();
+            this.trackBar_G = new System.Windows.Forms.TrackBar();
+            this.trackBar_R = new System.Windows.Forms.TrackBar();
             this.label3 = new System.Windows.Forms.Label();
             this.Apply_Filter = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
@@ -46,21 +52,17 @@
             this.Contrast_bar = new System.Windows.Forms.TrackBar();
             this.label1 = new System.Windows.Forms.Label();
             this.Brightness_bar = new System.Windows.Forms.TrackBar();
-            this.trackBar_B = new System.Windows.Forms.TrackBar();
-            this.trackBar_G = new System.Windows.Forms.TrackBar();
-            this.trackBar_R = new System.Windows.Forms.TrackBar();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
+            this.apply_RGB = new System.Windows.Forms.Button();
+            this.Cancel_button = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Contrast_bar)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Brightness_bar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar_B)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar_G)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar_R)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Contrast_bar)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Brightness_bar)).BeginInit();
             this.SuspendLayout();
             // 
             // openFileDialog1
@@ -105,6 +107,8 @@
             // groupBox1
             // 
             this.groupBox1.AutoSize = true;
+            this.groupBox1.Controls.Add(this.Cancel_button);
+            this.groupBox1.Controls.Add(this.apply_RGB);
             this.groupBox1.Controls.Add(this.label7);
             this.groupBox1.Controls.Add(this.label8);
             this.groupBox1.Controls.Add(this.label5);
@@ -126,10 +130,67 @@
             this.groupBox1.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.groupBox1.Location = new System.Drawing.Point(13, 28);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(215, 572);
+            this.groupBox1.Size = new System.Drawing.Size(215, 587);
             this.groupBox1.TabIndex = 5;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Инструменты";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label7.Location = new System.Drawing.Point(6, 390);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(20, 19);
+            this.label7.TabIndex = 24;
+            this.label7.Text = "G";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label8.Location = new System.Drawing.Point(6, 431);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(19, 19);
+            this.label8.TabIndex = 23;
+            this.label8.Text = "B";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label5.Location = new System.Drawing.Point(6, 348);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(19, 19);
+            this.label5.TabIndex = 22;
+            this.label5.Text = "R";
+            // 
+            // trackBar_B
+            // 
+            this.trackBar_B.Location = new System.Drawing.Point(31, 431);
+            this.trackBar_B.Minimum = -10;
+            this.trackBar_B.Name = "trackBar_B";
+            this.trackBar_B.Size = new System.Drawing.Size(164, 45);
+            this.trackBar_B.TabIndex = 21;
+            this.trackBar_B.Scroll += new System.EventHandler(this.trackBar_B_Scroll);
+            // 
+            // trackBar_G
+            // 
+            this.trackBar_G.Location = new System.Drawing.Point(31, 390);
+            this.trackBar_G.Minimum = -10;
+            this.trackBar_G.Name = "trackBar_G";
+            this.trackBar_G.Size = new System.Drawing.Size(164, 45);
+            this.trackBar_G.TabIndex = 20;
+            this.trackBar_G.Scroll += new System.EventHandler(this.trackBar_G_Scroll);
+            // 
+            // trackBar_R
+            // 
+            this.trackBar_R.Location = new System.Drawing.Point(31, 348);
+            this.trackBar_R.Minimum = -10;
+            this.trackBar_R.Name = "trackBar_R";
+            this.trackBar_R.Size = new System.Drawing.Size(164, 45);
+            this.trackBar_R.TabIndex = 19;
+            this.trackBar_R.Scroll += new System.EventHandler(this.trackBar_R_Scroll);
             // 
             // label3
             // 
@@ -259,62 +320,27 @@
             this.Brightness_bar.TabIndex = 1;
             this.Brightness_bar.Scroll += new System.EventHandler(this.Brightness_bar_Scroll);
             // 
-            // trackBar_B
+            // apply_RGB
             // 
-            this.trackBar_B.Location = new System.Drawing.Point(31, 441);
-            this.trackBar_B.Minimum = -10;
-            this.trackBar_B.Name = "trackBar_B";
-            this.trackBar_B.Size = new System.Drawing.Size(164, 45);
-            this.trackBar_B.TabIndex = 21;
-            this.trackBar_B.Scroll += new System.EventHandler(this.trackBar_B_Scroll);
+            this.apply_RGB.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.apply_RGB.Location = new System.Drawing.Point(10, 468);
+            this.apply_RGB.Name = "apply_RGB";
+            this.apply_RGB.Size = new System.Drawing.Size(185, 29);
+            this.apply_RGB.TabIndex = 25;
+            this.apply_RGB.Text = "Применить";
+            this.apply_RGB.UseVisualStyleBackColor = true;
+            this.apply_RGB.Click += new System.EventHandler(this.apply_RGB_Click);
             // 
-            // trackBar_G
+            // Cancel_button
             // 
-            this.trackBar_G.Location = new System.Drawing.Point(31, 390);
-            this.trackBar_G.Minimum = -10;
-            this.trackBar_G.Name = "trackBar_G";
-            this.trackBar_G.Size = new System.Drawing.Size(164, 45);
-            this.trackBar_G.TabIndex = 20;
-            this.trackBar_G.Scroll += new System.EventHandler(this.trackBar_G_Scroll);
-            // 
-            // trackBar_R
-            // 
-            this.trackBar_R.Location = new System.Drawing.Point(31, 348);
-            this.trackBar_R.Minimum = -10;
-            this.trackBar_R.Name = "trackBar_R";
-            this.trackBar_R.Size = new System.Drawing.Size(164, 45);
-            this.trackBar_R.TabIndex = 19;
-            this.trackBar_R.Scroll += new System.EventHandler(this.trackBar_R_Scroll);
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label5.Location = new System.Drawing.Point(6, 348);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(19, 19);
-            this.label5.TabIndex = 22;
-            this.label5.Text = "R";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label7.Location = new System.Drawing.Point(6, 390);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(20, 19);
-            this.label7.TabIndex = 24;
-            this.label7.Text = "G";
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label8.Location = new System.Drawing.Point(6, 431);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(19, 19);
-            this.label8.TabIndex = 23;
-            this.label8.Text = "B";
+            this.Cancel_button.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.Cancel_button.Location = new System.Drawing.Point(95, 530);
+            this.Cancel_button.Name = "Cancel_button";
+            this.Cancel_button.Size = new System.Drawing.Size(114, 29);
+            this.Cancel_button.TabIndex = 26;
+            this.Cancel_button.Text = "Отмена";
+            this.Cancel_button.UseVisualStyleBackColor = true;
+            this.Cancel_button.Click += new System.EventHandler(this.Cancel_button_Click);
             // 
             // Form1
             // 
@@ -333,12 +359,12 @@
             this.menuStrip1.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Contrast_bar)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Brightness_bar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar_B)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar_G)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar_R)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Contrast_bar)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Brightness_bar)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -369,6 +395,8 @@
         private System.Windows.Forms.TrackBar trackBar_B;
         private System.Windows.Forms.TrackBar trackBar_G;
         private System.Windows.Forms.TrackBar trackBar_R;
+        private System.Windows.Forms.Button apply_RGB;
+        private System.Windows.Forms.Button Cancel_button;
     }
 }
 
