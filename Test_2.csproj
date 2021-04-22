@@ -48,6 +48,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BriCon.cs" />
+    <Compile Include="ColorBalance.cs" />
     <Compile Include="Filters.cs" />
     <Compile Include="OBR.cs" />
     <Compile Include="Form1.cs">

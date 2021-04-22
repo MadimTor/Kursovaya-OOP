@@ -34,6 +34,10 @@
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.Apply_Filter = new System.Windows.Forms.Button();
+            this.label4 = new System.Windows.Forms.Label();
+            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
             this.negative_button = new System.Windows.Forms.Button();
             this.Sharp_button = new System.Windows.Forms.Button();
             this.button_filter_test = new System.Windows.Forms.Button();
@@ -42,16 +46,21 @@
             this.Contrast_bar = new System.Windows.Forms.TrackBar();
             this.label1 = new System.Windows.Forms.Label();
             this.Brightness_bar = new System.Windows.Forms.TrackBar();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
-            this.label4 = new System.Windows.Forms.Label();
-            this.Apply_Filter = new System.Windows.Forms.Button();
-            this.label3 = new System.Windows.Forms.Label();
+            this.trackBar_B = new System.Windows.Forms.TrackBar();
+            this.trackBar_G = new System.Windows.Forms.TrackBar();
+            this.trackBar_R = new System.Windows.Forms.TrackBar();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Contrast_bar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Brightness_bar)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar_B)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar_G)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar_R)).BeginInit();
             this.SuspendLayout();
             // 
             // openFileDialog1
@@ -63,7 +72,7 @@
             this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.pictureBox1.Location = new System.Drawing.Point(234, 28);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(776, 511);
+            this.pictureBox1.Size = new System.Drawing.Size(776, 559);
             this.pictureBox1.TabIndex = 3;
             this.pictureBox1.TabStop = false;
             // 
@@ -96,6 +105,12 @@
             // groupBox1
             // 
             this.groupBox1.AutoSize = true;
+            this.groupBox1.Controls.Add(this.label7);
+            this.groupBox1.Controls.Add(this.label8);
+            this.groupBox1.Controls.Add(this.label5);
+            this.groupBox1.Controls.Add(this.trackBar_B);
+            this.groupBox1.Controls.Add(this.trackBar_G);
+            this.groupBox1.Controls.Add(this.trackBar_R);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.Apply_Filter);
             this.groupBox1.Controls.Add(this.label4);
@@ -111,15 +126,59 @@
             this.groupBox1.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.groupBox1.Location = new System.Drawing.Point(13, 28);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(215, 533);
+            this.groupBox1.Size = new System.Drawing.Size(215, 572);
             this.groupBox1.TabIndex = 5;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Инструменты";
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label3.Location = new System.Drawing.Point(7, 173);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(71, 19);
+            this.label3.TabIndex = 18;
+            this.label3.Text = "Фильтры";
+            // 
+            // Apply_Filter
+            // 
+            this.Apply_Filter.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.Apply_Filter.Location = new System.Drawing.Point(13, 263);
+            this.Apply_Filter.Name = "Apply_Filter";
+            this.Apply_Filter.Size = new System.Drawing.Size(196, 29);
+            this.Apply_Filter.TabIndex = 17;
+            this.Apply_Filter.Text = "Применить";
+            this.Apply_Filter.UseVisualStyleBackColor = true;
+            this.Apply_Filter.Click += new System.EventHandler(this.Apply_Filter_Click);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label4.Location = new System.Drawing.Point(89, 199);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(73, 19);
+            this.label4.TabIndex = 14;
+            this.label4.Text = "Степень: ";
+            // 
+            // numericUpDown1
+            // 
+            this.numericUpDown1.Font = new System.Drawing.Font("Tw Cen MT Condensed", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.numericUpDown1.Location = new System.Drawing.Point(168, 196);
+            this.numericUpDown1.Maximum = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.numericUpDown1.Name = "numericUpDown1";
+            this.numericUpDown1.Size = new System.Drawing.Size(41, 28);
+            this.numericUpDown1.TabIndex = 13;
+            // 
             // negative_button
             // 
             this.negative_button.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.negative_button.Location = new System.Drawing.Point(11, 335);
+            this.negative_button.Location = new System.Drawing.Point(11, 298);
             this.negative_button.Name = "negative_button";
             this.negative_button.Size = new System.Drawing.Size(196, 29);
             this.negative_button.TabIndex = 12;
@@ -130,7 +189,7 @@
             // Sharp_button
             // 
             this.Sharp_button.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.Sharp_button.Location = new System.Drawing.Point(13, 248);
+            this.Sharp_button.Location = new System.Drawing.Point(13, 229);
             this.Sharp_button.Name = "Sharp_button";
             this.Sharp_button.Size = new System.Drawing.Size(196, 29);
             this.Sharp_button.TabIndex = 11;
@@ -141,7 +200,7 @@
             // button_filter_test
             // 
             this.button_filter_test.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button_filter_test.Location = new System.Drawing.Point(13, 214);
+            this.button_filter_test.Location = new System.Drawing.Point(13, 195);
             this.button_filter_test.Name = "button_filter_test";
             this.button_filter_test.Size = new System.Drawing.Size(70, 29);
             this.button_filter_test.TabIndex = 10;
@@ -200,55 +259,68 @@
             this.Brightness_bar.TabIndex = 1;
             this.Brightness_bar.Scroll += new System.EventHandler(this.Brightness_bar_Scroll);
             // 
-            // numericUpDown1
+            // trackBar_B
             // 
-            this.numericUpDown1.Font = new System.Drawing.Font("Tw Cen MT Condensed", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numericUpDown1.Location = new System.Drawing.Point(168, 215);
-            this.numericUpDown1.Maximum = new decimal(new int[] {
-            10,
-            0,
-            0,
-            0});
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(41, 28);
-            this.numericUpDown1.TabIndex = 13;
+            this.trackBar_B.Location = new System.Drawing.Point(31, 441);
+            this.trackBar_B.Minimum = -10;
+            this.trackBar_B.Name = "trackBar_B";
+            this.trackBar_B.Size = new System.Drawing.Size(164, 45);
+            this.trackBar_B.TabIndex = 21;
+            this.trackBar_B.Scroll += new System.EventHandler(this.trackBar_B_Scroll);
             // 
-            // label4
+            // trackBar_G
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label4.Location = new System.Drawing.Point(89, 218);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(73, 19);
-            this.label4.TabIndex = 14;
-            this.label4.Text = "Степень: ";
+            this.trackBar_G.Location = new System.Drawing.Point(31, 390);
+            this.trackBar_G.Minimum = -10;
+            this.trackBar_G.Name = "trackBar_G";
+            this.trackBar_G.Size = new System.Drawing.Size(164, 45);
+            this.trackBar_G.TabIndex = 20;
+            this.trackBar_G.Scroll += new System.EventHandler(this.trackBar_G_Scroll);
             // 
-            // Apply_Filter
+            // trackBar_R
             // 
-            this.Apply_Filter.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.Apply_Filter.Location = new System.Drawing.Point(13, 282);
-            this.Apply_Filter.Name = "Apply_Filter";
-            this.Apply_Filter.Size = new System.Drawing.Size(196, 29);
-            this.Apply_Filter.TabIndex = 17;
-            this.Apply_Filter.Text = "Применить";
-            this.Apply_Filter.UseVisualStyleBackColor = true;
-            this.Apply_Filter.Click += new System.EventHandler(this.Apply_Filter_Click);
+            this.trackBar_R.Location = new System.Drawing.Point(31, 348);
+            this.trackBar_R.Minimum = -10;
+            this.trackBar_R.Name = "trackBar_R";
+            this.trackBar_R.Size = new System.Drawing.Size(164, 45);
+            this.trackBar_R.TabIndex = 19;
+            this.trackBar_R.Scroll += new System.EventHandler(this.trackBar_R_Scroll);
             // 
-            // label3
+            // label5
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label3.Location = new System.Drawing.Point(7, 192);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(71, 19);
-            this.label3.TabIndex = 18;
-            this.label3.Text = "Фильтры";
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label5.Location = new System.Drawing.Point(6, 348);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(19, 19);
+            this.label5.TabIndex = 22;
+            this.label5.Text = "R";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label7.Location = new System.Drawing.Point(6, 390);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(20, 19);
+            this.label7.TabIndex = 24;
+            this.label7.Text = "G";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label8.Location = new System.Drawing.Point(6, 431);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(19, 19);
+            this.label8.TabIndex = 23;
+            this.label8.Text = "B";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1022, 551);
+            this.ClientSize = new System.Drawing.Size(1022, 599);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.menuStrip1);
@@ -261,9 +333,12 @@
             this.menuStrip1.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Contrast_bar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Brightness_bar)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar_B)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar_G)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar_R)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -288,6 +363,12 @@
         private System.Windows.Forms.NumericUpDown numericUpDown1;
         private System.Windows.Forms.Button Apply_Filter;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TrackBar trackBar_B;
+        private System.Windows.Forms.TrackBar trackBar_G;
+        private System.Windows.Forms.TrackBar trackBar_R;
     }
 }
 

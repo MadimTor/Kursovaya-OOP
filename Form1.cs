@@ -16,9 +16,10 @@ namespace Test_2
     {
         BrightnessContrast obr = new BrightnessContrast();
         Filters filt = new Filters();
+        ColorBalance colorbal = new ColorBalance();
         public static Bitmap image;
         public static string full_name_of_image = "\0";
-        public static UInt32[,] pixel;
+
         
         public Form1()
         {
@@ -56,11 +57,6 @@ namespace Test_2
                     "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-        }
-
-        private void trackBar1_Scroll(object sender, EventArgs e)
-        {
-
         }
 
         private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
@@ -170,6 +166,51 @@ namespace Test_2
                 if (Form1.full_name_of_image != "\0")
                 {
                     image = filt.GetSource();
+                }
+            }
+        }
+
+        private void trackBar_R_Scroll(object sender, EventArgs e)
+        {
+            if (Form1.full_name_of_image != "\0")
+            {
+                if (Form1.full_name_of_image != "\0")
+                {
+                    colorbal.SetSource(image);
+                    colorbal.ColorBalance_R(trackBar_R.Value, trackBar_R.Maximum);
+                    colorbal.ColorBalance_G(trackBar_G.Value, trackBar_G.Maximum);
+                    colorbal.ColorBalance_B(trackBar_B.Value, trackBar_B.Maximum);
+                    pictureBox1.Image = colorbal.GetSource();
+                }
+            }
+        }
+
+        private void trackBar_G_Scroll(object sender, EventArgs e)
+        {
+            if (Form1.full_name_of_image != "\0")
+            {
+                if (Form1.full_name_of_image != "\0")
+                {
+                    colorbal.SetSource(image);
+                    colorbal.ColorBalance_R(trackBar_R.Value, trackBar_R.Maximum);
+                    colorbal.ColorBalance_G(trackBar_G.Value, trackBar_G.Maximum);
+                    colorbal.ColorBalance_B(trackBar_B.Value, trackBar_B.Maximum);
+                    pictureBox1.Image = colorbal.GetSource();
+                }
+            }
+        }
+
+        private void trackBar_B_Scroll(object sender, EventArgs e)
+        {
+            if (Form1.full_name_of_image != "\0")
+            {
+                if (Form1.full_name_of_image != "\0")
+                {
+                    colorbal.SetSource(image);
+                    colorbal.ColorBalance_R(trackBar_R.Value, trackBar_R.Maximum);
+                    colorbal.ColorBalance_G(trackBar_G.Value, trackBar_G.Maximum);
+                    colorbal.ColorBalance_B(trackBar_B.Value, trackBar_B.Maximum);
+                    pictureBox1.Image = colorbal.GetSource();
                 }
             }
         }
