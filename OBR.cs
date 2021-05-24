@@ -16,7 +16,8 @@ namespace Test_2
     class OBR
     {
         protected Bitmap _source;
-        protected UInt32[,] _sourceMatrix;
+        protected uint[,] _sourceMatrix;
+
 
         public OBR()
         {
@@ -27,10 +28,10 @@ namespace Test_2
         public void SetSource(Bitmap src)
         {
             _source = new Bitmap(src);
-            _sourceMatrix = new UInt32[_source.Height, _source.Width];
+            _sourceMatrix = new uint[_source.Height, _source.Width];
             for (int y = 0; y < _source.Height; y++)
                 for (int x = 0; x < _source.Width; x++)
-                    _sourceMatrix[y, x] = (UInt32)(_source.GetPixel(x, y).ToArgb());
+                    _sourceMatrix[y, x] = (uint)_source.GetPixel(x, y).ToArgb();
         }
 
         public Bitmap GetSource()

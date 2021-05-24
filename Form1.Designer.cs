@@ -34,7 +34,10 @@
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.Cancel_button = new System.Windows.Forms.Button();
+            this.apply_RGB = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
+            this.negative_button = new System.Windows.Forms.Button();
             this.label8 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.trackBar_B = new System.Windows.Forms.TrackBar();
@@ -44,7 +47,6 @@
             this.Apply_Filter = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
-            this.negative_button = new System.Windows.Forms.Button();
             this.Sharp_button = new System.Windows.Forms.Button();
             this.button_filter_test = new System.Windows.Forms.Button();
             this.Apply_britness = new System.Windows.Forms.Button();
@@ -52,8 +54,8 @@
             this.Contrast_bar = new System.Windows.Forms.TrackBar();
             this.label1 = new System.Windows.Forms.Label();
             this.Brightness_bar = new System.Windows.Forms.TrackBar();
-            this.apply_RGB = new System.Windows.Forms.Button();
-            this.Cancel_button = new System.Windows.Forms.Button();
+            this.saveAsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.Median_button = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -92,7 +94,8 @@
             // fileToolStripMenuItem
             // 
             this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.openToolStripMenuItem});
+            this.openToolStripMenuItem,
+            this.saveAsToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
             this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
             this.fileToolStripMenuItem.Text = "File";
@@ -100,16 +103,18 @@
             // openToolStripMenuItem
             // 
             this.openToolStripMenuItem.Name = "openToolStripMenuItem";
-            this.openToolStripMenuItem.Size = new System.Drawing.Size(103, 22);
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.openToolStripMenuItem.Text = "Open";
             this.openToolStripMenuItem.Click += new System.EventHandler(this.openToolStripMenuItem_Click);
             // 
             // groupBox1
             // 
             this.groupBox1.AutoSize = true;
+            this.groupBox1.Controls.Add(this.Median_button);
             this.groupBox1.Controls.Add(this.Cancel_button);
             this.groupBox1.Controls.Add(this.apply_RGB);
             this.groupBox1.Controls.Add(this.label7);
+            this.groupBox1.Controls.Add(this.negative_button);
             this.groupBox1.Controls.Add(this.label8);
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.trackBar_B);
@@ -119,7 +124,6 @@
             this.groupBox1.Controls.Add(this.Apply_Filter);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.numericUpDown1);
-            this.groupBox1.Controls.Add(this.negative_button);
             this.groupBox1.Controls.Add(this.Sharp_button);
             this.groupBox1.Controls.Add(this.button_filter_test);
             this.groupBox1.Controls.Add(this.Apply_britness);
@@ -134,6 +138,29 @@
             this.groupBox1.TabIndex = 5;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Инструменты";
+            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
+            // 
+            // Cancel_button
+            // 
+            this.Cancel_button.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.Cancel_button.Location = new System.Drawing.Point(95, 530);
+            this.Cancel_button.Name = "Cancel_button";
+            this.Cancel_button.Size = new System.Drawing.Size(114, 29);
+            this.Cancel_button.TabIndex = 26;
+            this.Cancel_button.Text = "Отмена";
+            this.Cancel_button.UseVisualStyleBackColor = true;
+            this.Cancel_button.Click += new System.EventHandler(this.Cancel_button_Click);
+            // 
+            // apply_RGB
+            // 
+            this.apply_RGB.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.apply_RGB.Location = new System.Drawing.Point(10, 468);
+            this.apply_RGB.Name = "apply_RGB";
+            this.apply_RGB.Size = new System.Drawing.Size(185, 29);
+            this.apply_RGB.TabIndex = 25;
+            this.apply_RGB.Text = "Применить";
+            this.apply_RGB.UseVisualStyleBackColor = true;
+            this.apply_RGB.Click += new System.EventHandler(this.apply_RGB_Click);
             // 
             // label7
             // 
@@ -144,6 +171,17 @@
             this.label7.Size = new System.Drawing.Size(20, 19);
             this.label7.TabIndex = 24;
             this.label7.Text = "G";
+            // 
+            // negative_button
+            // 
+            this.negative_button.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.negative_button.Location = new System.Drawing.Point(13, 176);
+            this.negative_button.Name = "negative_button";
+            this.negative_button.Size = new System.Drawing.Size(196, 29);
+            this.negative_button.TabIndex = 12;
+            this.negative_button.Text = "Негатив";
+            this.negative_button.UseVisualStyleBackColor = true;
+            this.negative_button.Click += new System.EventHandler(this.negative_button_Click);
             // 
             // label8
             // 
@@ -196,7 +234,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label3.Location = new System.Drawing.Point(7, 173);
+            this.label3.Location = new System.Drawing.Point(7, 208);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(71, 19);
             this.label3.TabIndex = 18;
@@ -205,7 +243,7 @@
             // Apply_Filter
             // 
             this.Apply_Filter.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.Apply_Filter.Location = new System.Drawing.Point(13, 263);
+            this.Apply_Filter.Location = new System.Drawing.Point(13, 300);
             this.Apply_Filter.Name = "Apply_Filter";
             this.Apply_Filter.Size = new System.Drawing.Size(196, 29);
             this.Apply_Filter.TabIndex = 17;
@@ -217,7 +255,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label4.Location = new System.Drawing.Point(89, 199);
+            this.label4.Location = new System.Drawing.Point(89, 234);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(73, 19);
             this.label4.TabIndex = 14;
@@ -226,7 +264,7 @@
             // numericUpDown1
             // 
             this.numericUpDown1.Font = new System.Drawing.Font("Tw Cen MT Condensed", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numericUpDown1.Location = new System.Drawing.Point(168, 196);
+            this.numericUpDown1.Location = new System.Drawing.Point(168, 231);
             this.numericUpDown1.Maximum = new decimal(new int[] {
             10,
             0,
@@ -236,21 +274,10 @@
             this.numericUpDown1.Size = new System.Drawing.Size(41, 28);
             this.numericUpDown1.TabIndex = 13;
             // 
-            // negative_button
-            // 
-            this.negative_button.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.negative_button.Location = new System.Drawing.Point(11, 298);
-            this.negative_button.Name = "negative_button";
-            this.negative_button.Size = new System.Drawing.Size(196, 29);
-            this.negative_button.TabIndex = 12;
-            this.negative_button.Text = "Негатив";
-            this.negative_button.UseVisualStyleBackColor = true;
-            this.negative_button.Click += new System.EventHandler(this.negative_button_Click);
-            // 
             // Sharp_button
             // 
             this.Sharp_button.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.Sharp_button.Location = new System.Drawing.Point(13, 229);
+            this.Sharp_button.Location = new System.Drawing.Point(13, 265);
             this.Sharp_button.Name = "Sharp_button";
             this.Sharp_button.Size = new System.Drawing.Size(196, 29);
             this.Sharp_button.TabIndex = 11;
@@ -261,7 +288,7 @@
             // button_filter_test
             // 
             this.button_filter_test.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button_filter_test.Location = new System.Drawing.Point(13, 195);
+            this.button_filter_test.Location = new System.Drawing.Point(13, 230);
             this.button_filter_test.Name = "button_filter_test";
             this.button_filter_test.Size = new System.Drawing.Size(70, 29);
             this.button_filter_test.TabIndex = 10;
@@ -272,7 +299,7 @@
             // Apply_britness
             // 
             this.Apply_britness.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.Apply_britness.Location = new System.Drawing.Point(11, 140);
+            this.Apply_britness.Location = new System.Drawing.Point(13, 140);
             this.Apply_britness.Name = "Apply_britness";
             this.Apply_britness.Size = new System.Drawing.Size(79, 30);
             this.Apply_britness.TabIndex = 7;
@@ -293,8 +320,7 @@
             // Contrast_bar
             // 
             this.Contrast_bar.Location = new System.Drawing.Point(6, 102);
-            this.Contrast_bar.Maximum = 8;
-            this.Contrast_bar.Minimum = -8;
+            this.Contrast_bar.Minimum = -10;
             this.Contrast_bar.Name = "Contrast_bar";
             this.Contrast_bar.Size = new System.Drawing.Size(201, 45);
             this.Contrast_bar.TabIndex = 3;
@@ -313,34 +339,28 @@
             // Brightness_bar
             // 
             this.Brightness_bar.Location = new System.Drawing.Point(6, 51);
-            this.Brightness_bar.Maximum = 8;
-            this.Brightness_bar.Minimum = -8;
+            this.Brightness_bar.Minimum = -10;
             this.Brightness_bar.Name = "Brightness_bar";
             this.Brightness_bar.Size = new System.Drawing.Size(201, 45);
             this.Brightness_bar.TabIndex = 1;
             this.Brightness_bar.Scroll += new System.EventHandler(this.Brightness_bar_Scroll);
             // 
-            // apply_RGB
+            // saveAsToolStripMenuItem
             // 
-            this.apply_RGB.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.apply_RGB.Location = new System.Drawing.Point(10, 468);
-            this.apply_RGB.Name = "apply_RGB";
-            this.apply_RGB.Size = new System.Drawing.Size(185, 29);
-            this.apply_RGB.TabIndex = 25;
-            this.apply_RGB.Text = "Применить";
-            this.apply_RGB.UseVisualStyleBackColor = true;
-            this.apply_RGB.Click += new System.EventHandler(this.apply_RGB_Click);
+            this.saveAsToolStripMenuItem.Name = "saveAsToolStripMenuItem";
+            this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.saveAsToolStripMenuItem.Text = "Save as...";
+            this.saveAsToolStripMenuItem.Click += new System.EventHandler(this.saveAsToolStripMenuItem_Click);
             // 
-            // Cancel_button
+            // Median_button
             // 
-            this.Cancel_button.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.Cancel_button.Location = new System.Drawing.Point(95, 530);
-            this.Cancel_button.Name = "Cancel_button";
-            this.Cancel_button.Size = new System.Drawing.Size(114, 29);
-            this.Cancel_button.TabIndex = 26;
-            this.Cancel_button.Text = "Отмена";
-            this.Cancel_button.UseVisualStyleBackColor = true;
-            this.Cancel_button.Click += new System.EventHandler(this.Cancel_button_Click);
+            this.Median_button.Location = new System.Drawing.Point(132, 25);
+            this.Median_button.Name = "Median_button";
+            this.Median_button.Size = new System.Drawing.Size(75, 23);
+            this.Median_button.TabIndex = 27;
+            this.Median_button.Text = "button1";
+            this.Median_button.UseVisualStyleBackColor = true;
+            this.Median_button.Click += new System.EventHandler(this.Median_button_Click);
             // 
             // Form1
             // 
@@ -352,7 +372,7 @@
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "SlowShop";
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.menuStrip1.ResumeLayout(false);
@@ -397,6 +417,8 @@
         private System.Windows.Forms.TrackBar trackBar_R;
         private System.Windows.Forms.Button apply_RGB;
         private System.Windows.Forms.Button Cancel_button;
+        private System.Windows.Forms.ToolStripMenuItem saveAsToolStripMenuItem;
+        private System.Windows.Forms.Button Median_button;
     }
 }
 

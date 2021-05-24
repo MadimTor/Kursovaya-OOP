@@ -21,8 +21,8 @@ namespace Test_2
         {
             int i, j, k, m, gap = (int)(N / 2);
             int tmpH = _source.Height + 2 * gap, tmpW = _source.Width + 2 * gap;
-            UInt32[,] tmppixel = new UInt32[tmpH, tmpW];
-            UInt32[,] newpixel = new UInt32[_source.Height, _source.Width];
+            uint[,] tmppixel = new uint[tmpH, tmpW];
+            uint[,] newpixel = new uint[_source.Height, _source.Width];
             //заполнение временного расширенного изображения
             //углы
             for (i = 0; i < gap; i++)
@@ -84,15 +84,58 @@ namespace Test_2
 
 
 
-        public void MedianFilter(int N)
+        public Bitmap MedianFiltering(int N)
         {
+            List<uint> termsListR = new List<uint>();
+            List<uint> termsListG = new List<uint>();
+            List<uint> termsListB = new List<uint>();
+            int mid = N * N / 2;
+            //byte[,] image = new byte[_source.Width, _source.Height];
+            //for (int i = 0; i < _source.Width; i++)
+            //{
+            //    for (int j = 0; j < _source.Height; j++)
+            //    {
+            //        var c = _source.GetPixel(i, j);
+            //        byte gray = (byte)(.333 * c.R + .333 * c.G + .333 * c.B);
+            //        image[i, j] = gray;
+            //    }
+            //}
 
+            for (int i = 0; i <= _source.Width - N; i++)
+                for (int j = 0; j <= _source.Height - N; j++)
+                {
+                    for (int x = i; x <= i + N -1; x++)
+                        for (int y = j; y <= j + N-1; y++)
+                        {
+                            Color col = _source.GetPixel(x, y);
+                            termsListR.Add(col.R);
+                            termsListG.Add(col.G);
+                            termsListB.Add(col.B);
 
+                        }
 
+                    uint[] termsR = termsListR.ToArray();
+                    uint[] termsG = termsListG.ToArray();
+                    uint[] termsB = termsListB.ToArray();
+                    termsListR.Clear();
+                    termsListG.Clear();
+                    termsListB.Clear();
+                    Array.Sort<uint>(termsR);
+                    Array.Sort<uint>(termsG);
+                    Array.Sort<uint>(termsB);
+                    Array.Reverse(termsR);
+                    Array.Reverse(termsG);
+                    Array.Reverse(termsB);
+                    uint colorR = termsR[mid];
+                    uint colorG = termsG[mid];
+                    uint colorB = termsB[mid];
+                    _source.SetPixel(i + 1, j + 1, Color.FromArgb((int)colorR, (int)colorG, (int)colorB));
+                }
+            return _source;
         }
 
         //вычисление нового цвета
-        public static RGB CalculationOfColor(UInt32 pixel, double coefficient)
+        public static RGB CalculationOfColor(uint pixel, double coefficient)
         {
             RGB Color = new RGB();
             Color.R = (float)(coefficient * ((pixel & 0x00FF0000) >> 16));
@@ -102,10 +145,10 @@ namespace Test_2
         }
 
         //сборка каналов
-        public static UInt32 Build(RGB ColorOfPixel)
+        public static uint Build(RGB ColorOfPixel)
         {
-            UInt32 Color;
-            Color = 0xFF000000 | ((UInt32)ColorOfPixel.R << 16) | ((UInt32)ColorOfPixel.G << 8) | ((UInt32)ColorOfPixel.B);
+            uint Color;
+            Color = 0xFF000000 | ((uint)ColorOfPixel.R << 16) | ((uint)ColorOfPixel.G << 8) | ((UInt32)ColorOfPixel.B);
             return Color;
         }
 
@@ -121,5 +164,7 @@ namespace Test_2
                                                            {0.013347, 0.111345, 0.225821, 0.111345, 0.013347},
                                                            {0.000789, 0.054901, 0.111345, 0.054901, 0.000789},
                                                            {0.000789, 0.006581, 0.013347, 0.006581, 0.000789}};
+
+
     }
 }

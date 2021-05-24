@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Drawing.Imaging;
 using System.Net;
+using System.Threading;
 
 namespace Test_2
 {
@@ -80,67 +81,10 @@ namespace Test_2
         {
             if (Form1.full_name_of_image != "\0")
             {
-                if (Form1.full_name_of_image != "\0")
-                {
-                    obr.SetSource(image);
-                    obr.Contrast(Contrast_bar.Value, Contrast_bar.Maximum);
-                    obr.Brightness(Brightness_bar.Value, Brightness_bar.Maximum);
-                    pictureBox1.Image = obr.GetSource();
-                }
-            }
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            if (Form1.full_name_of_image != "\0")
-            {
-                if (Form1.full_name_of_image != "\0")
-                {
-                    image = obr.GetSource();
-                    Brightness_bar.Value = 0;
-                    Contrast_bar.Value = 0;
-                }
-            }
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            if (Form1.full_name_of_image != "\0")
-            {
-                if (Form1.full_name_of_image != "\0")
-                {
-                    image = obr.GetSource();
-                    Contrast_bar.Value = 0;
-                }
-            }
-        }
-
-        private void button_filter_test_Click(object sender, EventArgs e)
-        {
-            if (Form1.full_name_of_image != "\0")
-            {
-                if (Form1.full_name_of_image != "\0")
-                {
-                    filt.SetSource(image);
-                    for (int i = 0; i < numericUpDown1.Value; i++)
-                    {                        
-                        filt.matrix_filtration(Filters.N2, Filters.blur);
-                    }
-                    pictureBox1.Image = filt.GetSource();
-                }
-            }
-        }
-
-        private void Sharp_button_Click(object sender, EventArgs e)
-        {
-            if (Form1.full_name_of_image != "\0")
-            {
-                if (Form1.full_name_of_image != "\0")
-                {
-                    filt.SetSource(image);
-                    filt.matrix_filtration(Filters.N1, Filters.sharpness);
-                    pictureBox1.Image = filt.GetSource();
-                }
+                obr.SetSource(image);
+                obr.Contrast(Contrast_bar.Value, Contrast_bar.Maximum);
+                obr.Brightness(Brightness_bar.Value, Brightness_bar.Maximum);
+                pictureBox1.Image = obr.GetSource();
             }
         }
 
@@ -148,25 +92,62 @@ namespace Test_2
         {
             if (Form1.full_name_of_image != "\0")
             {
-                if (Form1.full_name_of_image != "\0")
-                {
-                    obr.SetSource(image);
-                    obr.Negative();
-                    pictureBox1.Image = obr.GetSource();
-                    image = obr.GetSource();
-                    
-                }
+                obr.SetSource(image);
+                obr.Negative();
+                pictureBox1.Image = obr.GetSource();
+                image = obr.GetSource();
             }
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (Form1.full_name_of_image != "\0")
+            {
+                image = obr.GetSource();
+                Brightness_bar.Value = 0;
+                Contrast_bar.Value = 0;
+            }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            if (Form1.full_name_of_image != "\0")
+            {
+                image = obr.GetSource();
+                Contrast_bar.Value = 0;
+            }
+        }
+
+        private void button_filter_test_Click(object sender, EventArgs e)
+        {
+            if (Form1.full_name_of_image != "\0")
+            {
+                filt.SetSource(image);
+                for (int i = 0; i < numericUpDown1.Value; i++)
+                {
+                    filt.matrix_filtration(Filters.N2, Filters.blur);
+                }
+                pictureBox1.Image = filt.GetSource();
+            }
+        }
+
+        private void Sharp_button_Click(object sender, EventArgs e)
+        {
+            if (Form1.full_name_of_image != "\0")
+            {
+                filt.SetSource(image);
+                filt.matrix_filtration(Filters.N1, Filters.sharpness);
+                pictureBox1.Image = filt.GetSource();
+            }
+        }
+
+       
 
         private void Apply_Filter_Click(object sender, EventArgs e)
         {
             if (Form1.full_name_of_image != "\0")
             {
-                if (Form1.full_name_of_image != "\0")
-                {
-                    image = filt.GetSource();
-                }
+                image = filt.GetSource();
             }
         }
 
@@ -174,14 +155,11 @@ namespace Test_2
         {
             if (Form1.full_name_of_image != "\0")
             {
-                if (Form1.full_name_of_image != "\0")
-                {
-                    colorbal.SetSource(image);
-                    colorbal.ColorBalance_R(trackBar_R.Value, trackBar_R.Maximum);
-                    colorbal.ColorBalance_G(trackBar_G.Value, trackBar_G.Maximum);
-                    colorbal.ColorBalance_B(trackBar_B.Value, trackBar_B.Maximum);
-                    pictureBox1.Image = colorbal.GetSource();
-                }
+                colorbal.SetSource(image);
+                colorbal.ColorBalance_R(trackBar_R.Value, trackBar_R.Maximum);
+                colorbal.ColorBalance_G(trackBar_G.Value, trackBar_G.Maximum);
+                colorbal.ColorBalance_B(trackBar_B.Value, trackBar_B.Maximum);
+                pictureBox1.Image = colorbal.GetSource();
             }
         }
 
@@ -189,14 +167,11 @@ namespace Test_2
         {
             if (Form1.full_name_of_image != "\0")
             {
-                if (Form1.full_name_of_image != "\0")
-                {
-                    colorbal.SetSource(image);
-                    colorbal.ColorBalance_R(trackBar_R.Value, trackBar_R.Maximum);
-                    colorbal.ColorBalance_G(trackBar_G.Value, trackBar_G.Maximum);
-                    colorbal.ColorBalance_B(trackBar_B.Value, trackBar_B.Maximum);
-                    pictureBox1.Image = colorbal.GetSource();
-                }
+                colorbal.SetSource(image);
+                colorbal.ColorBalance_R(trackBar_R.Value, trackBar_R.Maximum);
+                colorbal.ColorBalance_G(trackBar_G.Value, trackBar_G.Maximum);
+                colorbal.ColorBalance_B(trackBar_B.Value, trackBar_B.Maximum);
+                pictureBox1.Image = colorbal.GetSource();
             }
         }
 
@@ -204,29 +179,78 @@ namespace Test_2
         {
             if (Form1.full_name_of_image != "\0")
             {
-                if (Form1.full_name_of_image != "\0")
-                {
-                    colorbal.SetSource(image);
-                    colorbal.ColorBalance_R(trackBar_R.Value, trackBar_R.Maximum);
-                    colorbal.ColorBalance_G(trackBar_G.Value, trackBar_G.Maximum);
-                    colorbal.ColorBalance_B(trackBar_B.Value, trackBar_B.Maximum);
-                    pictureBox1.Image = colorbal.GetSource();
-                }
+
+                colorbal.SetSource(image);
+                colorbal.ColorBalance_R(trackBar_R.Value, trackBar_R.Maximum);
+                colorbal.ColorBalance_G(trackBar_G.Value, trackBar_G.Maximum);
+                colorbal.ColorBalance_B(trackBar_B.Value, trackBar_B.Maximum);
+                pictureBox1.Image = colorbal.GetSource();
             }
         }
 
         private void apply_RGB_Click(object sender, EventArgs e)
         {
-            image = colorbal.GetSource();
-            trackBar_R.Value = 0;
-            trackBar_G.Value = 0;
-            trackBar_B.Value = 0;
+            if (Form1.full_name_of_image != "\0")
+            {
+                image = colorbal.GetSource();
+                trackBar_R.Value = 0;
+                trackBar_G.Value = 0;
+                trackBar_B.Value = 0;
+            }
         }
 
         private void Cancel_button_Click(object sender, EventArgs e)
         {
-            image = new Bitmap(full_name_of_image);
-            pictureBox1.Image = image;
+            if (Form1.full_name_of_image != "\0")
+            {
+                image = new Bitmap(full_name_of_image);
+                pictureBox1.Image = image;
+                Brightness_bar.Value = 0;
+                Contrast_bar.Value = 0;
+                trackBar_R.Value = 0;
+                trackBar_G.Value = 0;
+                trackBar_B.Value = 0;
+
+            }
+        }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void saveAsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (image != pictureBox1.Image)
+            {
+                MessageBox.Show("Вы не применили некоторые изменения!");
+            }
+            if (image != null)
+            {
+                SaveFileDialog savedialog = new SaveFileDialog();
+                savedialog.Title = "Сохранить картинку как...";
+                savedialog.OverwritePrompt = true;
+                savedialog.CheckPathExists = true;
+                savedialog.Filter = "Image Files(*.BMP)|*.BMP|Image Files(*.JPG)|*.JPG|Image Files(*.GIF)|*.GIF|Image Files(*.PNG)|*.PNG|All files (*.*)|*.*";
+                if (savedialog.ShowDialog() == DialogResult.OK)
+                {
+                    try
+                    {
+                        image.Save(savedialog.FileName, System.Drawing.Imaging.ImageFormat.Jpeg);
+                    }
+                    catch
+                    {
+                        MessageBox.Show("Невозможно сохранить изображение", "Ошибка",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
+        }
+
+        private void Median_button_Click(object sender, EventArgs e)
+        {
+            filt.SetSource(image);
+            pictureBox1.Image = filt.MedianFiltering(5);
         }
     }
 }
