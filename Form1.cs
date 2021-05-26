@@ -30,7 +30,7 @@ namespace Test_2
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
+            comboBox1.SelectedIndex = 0;
         }
 
         private void openToolStripMenuItem_Click(object sender, EventArgs e)
@@ -43,13 +43,11 @@ namespace Test_2
                 {
                     full_name_of_image = open_dialog.FileName;
                     image = new Bitmap(open_dialog.FileName);
-                    this.pictureBox1.Size = image.Size;
-                    this.Width = image.Width + groupBox1.Width + 100;
-                    if (image.Height > groupBox1.Height)
-                        this.Height = image.Height;
                     pictureBox1.Image = image;
                     pictureBox1.Invalidate();
                     obr.SetSource(image);
+                    filt.SetSource(image);
+                    colorbal.SetSource(image);
                 }
                 catch
                 {
@@ -249,8 +247,23 @@ namespace Test_2
 
         private void Median_button_Click(object sender, EventArgs e)
         {
-            filt.SetSource(image);
-            pictureBox1.Image = filt.MedianFiltering(5);
+            if (Form1.full_name_of_image != "\0")
+            {
+                filt.SetSource(image);
+                filt.MedianFiltering(Convert.ToInt32(comboBox1.SelectedItem));
+                pictureBox1.Image = filt.GetSource();
+            }
+            
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

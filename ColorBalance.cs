@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Test_2
+﻿namespace Test_2
 {
-    class ColorBalance : OBR
+    class ColorBalance : processingSource
     {
         //цветовой баланс R
         public void ColorBalance_R(int poz, int lenght)

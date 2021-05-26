@@ -1,9 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Drawing;
 
 namespace Test_2
 {
@@ -15,18 +11,18 @@ namespace Test_2
     }
 
 
-    class Filters : OBR
+    class Filters : processingSource
     {
         public void matrix_filtration(int N, double[,] matryx)
         {
-            int i, j, k, m, gap = (int)(N / 2);
+            int gap = (int)(N / 2);
             int tmpH = _source.Height + 2 * gap, tmpW = _source.Width + 2 * gap;
             uint[,] tmppixel = new uint[tmpH, tmpW];
             uint[,] newpixel = new uint[_source.Height, _source.Width];
             //заполнение временного расширенного изображения
             //углы
-            for (i = 0; i < gap; i++)
-                for (j = 0; j < gap; j++)
+            for (int i = 0; i < gap; i++)
+                for (int j = 0; j < gap; j++)
                 {
                     tmppixel[i, j] = _sourceMatrix[0, 0];
                     tmppixel[i, tmpW - 1 - j] = _sourceMatrix[0, _source.Width - 1];
@@ -34,34 +30,34 @@ namespace Test_2
                     tmppixel[tmpH - 1 - i, tmpW - 1 - j] = _sourceMatrix[_source.Height - 1, _source.Width - 1];
                 }
             //крайние левая и правая стороны
-            for (i = gap; i < tmpH - gap; i++)
-                for (j = 0; j < gap; j++)
+            for (int i = gap; i < tmpH - gap; i++)
+                for (int j = 0; j < gap; j++)
                 {
                     tmppixel[i, j] = _sourceMatrix[i - gap, j];
                     tmppixel[i, tmpW - 1 - j] = _sourceMatrix[i - gap, _source.Width - 1 - j];
                 }
             //крайние верхняя и нижняя стороны
-            for (i = 0; i < gap; i++)
-                for (j = gap; j < tmpW - gap; j++)
+            for (int i  = 0; i < gap; i++)
+                for (int j = gap; j < tmpW - gap; j++)
                 {
                     tmppixel[i, j] = _sourceMatrix[i, j - gap];
                     tmppixel[tmpH - 1 - i, j] = _sourceMatrix[_source.Height - 1 - i, j - gap];
                 }
             //центр
-            for (i = 0; i < _source.Height; i++)
-                for (j = 0; j < _source.Width; j++)
+            for (int i  = 0; i < _source.Height; i++)
+                for (int j  = 0; j < _source.Width; j++)
                     tmppixel[i + gap, j + gap] = _sourceMatrix[i, j];
             //применение ядра свертки
             RGB ColorOfPixel = new RGB();
             RGB ColorOfCell = new RGB();
-            for (i = gap; i < tmpH - gap; i++)
-                for (j = gap; j < tmpW - gap; j++)
+            for (int i = gap; i < tmpH - gap; i++)
+                for (int j = gap; j < tmpW - gap; j++)
                 {
                     ColorOfPixel.R = 0;
                     ColorOfPixel.G = 0;
                     ColorOfPixel.B = 0;
-                    for (k = 0; k < N; k++)
-                        for (m = 0; m < N; m++)
+                    for (int k = 0; k < N; k++)
+                        for (int m = 0; m < N; m++)
                         {
                             ColorOfCell = CalculationOfColor(tmppixel[i - gap + k, j - gap + m], matryx[k, m]);
                             ColorOfPixel.R += ColorOfCell.R;
@@ -84,33 +80,56 @@ namespace Test_2
 
 
 
-        public Bitmap MedianFiltering(int N)
+        public void MedianFiltering(int N)
         {
             List<uint> termsListR = new List<uint>();
             List<uint> termsListG = new List<uint>();
             List<uint> termsListB = new List<uint>();
             int mid = N * N / 2;
-            //byte[,] image = new byte[_source.Width, _source.Height];
-            //for (int i = 0; i < _source.Width; i++)
-            //{
-            //    for (int j = 0; j < _source.Height; j++)
-            //    {
-            //        var c = _source.GetPixel(i, j);
-            //        byte gray = (byte)(.333 * c.R + .333 * c.G + .333 * c.B);
-            //        image[i, j] = gray;
-            //    }
-            //}
 
-            for (int i = 0; i <= _source.Width - N; i++)
-                for (int j = 0; j <= _source.Height - N; j++)
+            int gap = (int)(N / 2);
+            int tmpH = _source.Height + 2 * gap, tmpW = _source.Width + 2 * gap;
+            uint[,] tmppixel = new uint[tmpH, tmpW];
+            //заполнение временного расширенного изображения
+            //углы
+            for (int i = 0; i < gap; i++)
+                for (int  j = 0; j < gap; j++)
                 {
-                    for (int x = i; x <= i + N -1; x++)
-                        for (int y = j; y <= j + N-1; y++)
+                    tmppixel[i, j] = _sourceMatrix[0, 0];
+                    tmppixel[i, tmpW - 1 - j] = _sourceMatrix[0, _source.Width - 1];
+                    tmppixel[tmpH - 1 - i, j] = _sourceMatrix[_source.Height - 1, 0];
+                    tmppixel[tmpH - 1 - i, tmpW - 1 - j] = _sourceMatrix[_source.Height - 1, _source.Width - 1];
+                }
+            //крайние левая и правая стороны
+            for (int i = gap; i < tmpH - gap; i++)
+                for (int j = 0; j < gap; j++)
+                {
+                    tmppixel[i, j] = _sourceMatrix[i - gap, j];
+                    tmppixel[i, tmpW - 1 - j] = _sourceMatrix[i - gap, _source.Width - 1 - j];
+                }
+            //крайние верхняя и нижняя стороны
+            for (int i = 0; i < gap; i++)
+                for (int j = gap; j < tmpW - gap; j++)
+                {
+                    tmppixel[i, j] = _sourceMatrix[i, j - gap];
+                    tmppixel[tmpH - 1 - i, j] = _sourceMatrix[_source.Height - 1 - i, j - gap];
+                }
+            //центр
+            for (int i  = 0; i < _source.Height; i++)
+                for (int j  = 0; j < _source.Width; j++)
+                    tmppixel[i + gap, j + gap] = _sourceMatrix[i, j];
+
+
+
+            for (int i = gap; i < tmpH - gap; i++)
+                for (int j = gap; j < tmpW - gap; j++)
+                {
+                    for (int x = i; x <= i + N - 1; x++)
+                        for (int y = j; y <= j + N - 1; y++)
                         {
-                            Color col = _source.GetPixel(x, y);
-                            termsListR.Add(col.R);
-                            termsListG.Add(col.G);
-                            termsListB.Add(col.B);
+                            termsListR.Add(((tmppixel[x - gap, y - gap] & 0x00FF0000) >> 16));
+                            termsListG.Add(((tmppixel[x - gap, y - gap] & 0x0000FF00) >> 8));
+                            termsListB.Add((tmppixel[x - gap, y - gap] & 0x000000FF));
 
                         }
 
@@ -129,9 +148,10 @@ namespace Test_2
                     uint colorR = termsR[mid];
                     uint colorG = termsG[mid];
                     uint colorB = termsB[mid];
-                    _source.SetPixel(i + 1, j + 1, Color.FromArgb((int)colorR, (int)colorG, (int)colorB));
+                    _sourceMatrix[i - gap, j - gap] = 0xFF000000 | ((uint)colorR << 16) | ((uint)colorG << 8) | ((uint)colorB);
+              
                 }
-            return _source;
+            
         }
 
         //вычисление нового цвета
@@ -148,7 +168,7 @@ namespace Test_2
         public static uint Build(RGB ColorOfPixel)
         {
             uint Color;
-            Color = 0xFF000000 | ((uint)ColorOfPixel.R << 16) | ((uint)ColorOfPixel.G << 8) | ((UInt32)ColorOfPixel.B);
+            Color = 0xFF000000 | ((uint)ColorOfPixel.R << 16) | ((uint)ColorOfPixel.G << 8) | ((uint)ColorOfPixel.B);
             return Color;
         }
 

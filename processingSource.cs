@@ -1,25 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using System.Drawing.Imaging;
-using System.Net;
+﻿using System.Drawing;
 
 namespace Test_2
 {
 
-    class OBR
+    class processingSource
     {
         protected Bitmap _source;
         protected uint[,] _sourceMatrix;
 
 
-        public OBR()
+        public processingSource()
         {
             _source = null;
             _sourceMatrix = null;
